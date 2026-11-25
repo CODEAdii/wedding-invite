@@ -2,8 +2,8 @@
 
 An Indian-style wedding invitation that behaves like a real card, not a website: a wax-sealed
 envelope opens to reveal a gold-bordered invitation card that you turn page by page — the
-invitation, the countdown, the celebrations, the venue, RSVP and a closing note, with
-hand-drawn illustrations of the couple, a dhol player and a mandap.
+invitation, the countdown, the celebrations, the venue, a photo gallery and a closing note,
+with hand-drawn illustrations of the couple, a dhol player and a mandap.
 
 Built with **React + Vite** (UI only — no backend).
 
@@ -22,6 +22,19 @@ pnpm preview     # preview the production build
 > `pnpm-workspace.yaml` allows only `esbuild` to run its install script — pnpm 10+ blocks
 > dependency build scripts by default, and Vite needs esbuild's binary.
 
+## Your photos
+
+Drop photos into **`src/assets/photos/`** — the **Our moments** card picks them up automatically,
+no code changes needed.
+
+- Formats: `.jpg`, `.jpeg`, `.png`, `.webp`, `.avif` (lowercase names recommended)
+- Order: sorted by file name, so use `01.jpg`, `02.jpg`, `03.jpg` …
+- Recommended: portrait or square, ~1200 px wide, under ~500 KB each
+- The gallery crops to a 4:5 portrait frame, so keep faces centred
+- 1 or 2 photos get a larger centred layout; 3+ fill a neat grid
+
+A full guide lives in `src/assets/photos/README.md`.
+
 ## The experience
 
 | Card | Notes |
@@ -31,7 +44,7 @@ pnpm preview     # preview the production build
 | Save the date | Live countdown to 22 Feb 2027, 10:00 AM IST, plus an "Add to calendar" `.ics` download |
 | The celebrations | Haldi, Mehndi, Sangeet and Baraat & Wedding with times, places and dress codes |
 | The venue | Mandap illustration, address, timings and a Google Maps link |
-| RSVP | Accept/decline, guest count, a note, and a thank-you state |
+| Our moments | A photo gallery fed by `src/assets/photos/` (shows a graceful "coming soon" state while empty) |
 | With love | Couple illustration, hashtag and a "reopen the envelope" link |
 
 Navigation: on-screen arrows, the gold dots (jump to any card), a "Turn the card" link,
@@ -47,14 +60,13 @@ and reduced-motion support.
 - **Countdown target** → `TARGET` in `src/components/pages/CountdownPage.jsx`
 - **Events / dress codes** → `events` array in `src/components/pages/CelebrationsPage.jsx`
 - **Venue + map link** → `src/components/pages/VenuePage.jsx`, `src/lib/calendar.js`
-- **RSVP** → `src/components/pages/RsvpPage.jsx` (demo only; see below)
+- **Photos** → `src/assets/photos/` (see above)
 - **Illustrations** → `src/components/Art.jsx` (hand-drawn SVG, edit colours and shapes there)
 - **Colours, type and animations** → `src/styles.css` (`:root` tokens at the top)
 - **Envelope** → `src/components/EnvelopeIntro.jsx`
 
 The "Grand Palace Lawns, Jaipur" venue and family details are placeholders — swap in the real
-ones before sharing the link. The RSVP form currently shows a success state locally; connect
-`submit` in `RsvpPage.jsx` to Formspree, a Google Form or your own API to collect replies.
+ones before sharing the link.
 
 ## Notes
 

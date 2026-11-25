@@ -1,5 +1,5 @@
-/* ================================================================== */
-/*  Aditya & Komal — digital invitation card                           */
+﻿/* ================================================================== */
+/*  Aditya & Komal â€” digital invitation card                           */
 /* ================================================================== */
 
 :root {
@@ -1065,154 +1065,107 @@ svg {
   letter-spacing: 0.14em;
 }
 
-/* ---------------- rsvp ---------------- */
-.rsvp-form {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(8px, 1.6svh, 12px);
-  text-align: left;
+/* ---------------- gallery ---------------- */
+.gallery-page .page-head {
+  margin-bottom: clamp(10px, 2svh, 16px);
 }
 
-.rsvp-toggle {
+.photo-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5px;
-  padding: 4px;
-  border: 1px solid rgba(201, 162, 75, 0.3);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  width: 100%;
+}
+
+.photo-frame {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 4 / 5;
+  padding: 3px;
+  overflow: hidden;
   background: #f7ecd9;
+  border: 1px solid rgba(201, 162, 75, 0.5);
+  box-shadow: 0 10px 20px -18px rgba(77, 11, 24, 0.45);
+  animation: photoIn 0.8s cubic-bezier(0.2, 0.75, 0.2, 1) var(--photo-delay, 0s) both;
 }
 
-.rsvp-toggle-btn {
-  min-height: 40px;
-  padding: 9px 4px;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  font-family: var(--font-sans);
-  font-size: clamp(0.44rem, 1.5vw, 0.51rem);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--muted);
-  transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.rsvp-toggle-btn.active {
-  background: linear-gradient(135deg, #5d1122, #3d0813);
-  color: #f4e3ba;
-  box-shadow: 0 8px 16px -12px rgba(44, 7, 16, 0.9);
-}
-
-.field-row {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 78px;
-  gap: 12px;
-}
-
-.field {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.field-label {
-  font-family: var(--font-sans);
-  font-size: clamp(0.42rem, 1.4vw, 0.48rem);
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
-.field input,
-.field select,
-.field textarea {
+.photo-frame img {
   width: 100%;
-  padding: 7px 2px;
-  border: none;
-  border-bottom: 1px solid rgba(77, 11, 24, 0.22);
-  border-radius: 0;
-  background: transparent;
-  font-family: var(--font-body);
-  font-size: 1rem;
-  line-height: 1.4;
-  color: var(--ink);
-  outline: none;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
 }
 
-.field textarea {
-  resize: none;
-  min-height: 48px;
+.photo-frame:hover img {
+  transform: scale(1.045);
 }
 
-.field select {
-  appearance: none;
-  -webkit-appearance: none;
-  background-image: linear-gradient(45deg, transparent 50%, var(--gold-deep) 50%),
-    linear-gradient(135deg, var(--gold-deep) 50%, transparent 50%);
-  background-position: calc(100% - 10px) 55%, calc(100% - 4px) 55%;
-  background-size: 6px 6px, 6px 6px;
-  background-repeat: no-repeat;
-  padding-right: 20px;
-  cursor: pointer;
-}
-
-.field input::placeholder,
-.field textarea::placeholder {
-  color: #b3a08d;
-  font-style: italic;
-}
-
-.field input:focus,
-.field select:focus,
-.field textarea:focus {
-  border-bottom-color: var(--gold-deep);
-  box-shadow: 0 1px 0 var(--gold-deep);
-}
-
-.rsvp-submit {
-  width: 100%;
-  margin-top: 2px;
-}
-
-.rsvp-success {
+.photo-empty {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
-  padding: 6px 2px 2px;
-  text-align: center;
+  gap: 6px;
+  padding: clamp(20px, 4svh, 30px) 16px;
+  border: 1px dashed rgba(201, 162, 75, 0.5);
+  background: rgba(255, 255, 255, 0.35);
 }
 
-.rsvp-success-mark {
-  display: grid;
-  place-items: center;
-  width: 52px;
-  height: 52px;
+.photo-empty svg {
+  width: clamp(46px, 12vw, 56px);
+  height: auto;
   margin-bottom: 4px;
-  border-radius: 50%;
-  border: 1px solid rgba(201, 162, 75, 0.65);
   color: var(--gold-deep);
-  font-size: 1.25rem;
-  animation: pop 0.6s cubic-bezier(0.2, 0.9, 0.3, 1.4) both;
+  opacity: 0.85;
 }
 
-.rsvp-success h3 {
+.photo-empty-title {
   font-family: var(--font-display);
-  font-size: clamp(1.3rem, 5vw, 1.7rem);
-  font-weight: 400;
+  font-size: clamp(1.05rem, 4vw, 1.2rem);
   color: var(--maroon);
 }
 
-.rsvp-success p {
-  max-width: 36ch;
+.photo-empty-text {
+  max-width: 32ch;
   font-family: var(--font-body);
-  font-size: clamp(0.88rem, 2.9vw, 0.98rem);
-  line-height: 1.65;
+  font-style: italic;
+  font-size: clamp(0.82rem, 2.7vw, 0.9rem);
+  line-height: 1.6;
   color: var(--muted);
 }
 
-.rsvp-success .btn {
-  margin-top: 8px;
+.photo-empty-hint {
+  margin-top: 6px;
+  font-family: var(--font-sans);
+  font-size: 0.48rem;
+  letter-spacing: 0.12em;
+  color: #a3937f;
+}
+
+.photo-empty-hint code {
+  font-family: Consolas, 'Courier New', monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0;
+  color: var(--maroon);
+  background: rgba(201, 162, 75, 0.14);
+  padding: 1px 5px;
+}
+
+@media (min-width: 600px) {
+  .photo-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.photo-grid[data-count='1'] {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 214px;
+  margin: 0 auto;
+}
+
+.photo-grid[data-count='2'] {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 336px;
+  margin: 0 auto;
 }
 
 /* ---------------- closing ---------------- */
@@ -1745,16 +1698,7 @@ svg {
   }
 }
 
-@keyframes pop {
-  from {
-    opacity: 0;
-    transform: scale(0.6);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
+
 
 @keyframes deckIn {
   from {
@@ -1827,6 +1771,17 @@ svg {
   from {
     opacity: 0.3;
     transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes photoIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
   }
   to {
     opacity: 1;

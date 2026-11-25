@@ -4,7 +4,7 @@ import CoverPage from './pages/CoverPage'
 import CountdownPage from './pages/CountdownPage'
 import CelebrationsPage from './pages/CelebrationsPage'
 import VenuePage from './pages/VenuePage'
-import RsvpPage from './pages/RsvpPage'
+import GalleryPage from './pages/GalleryPage'
 import ClosingPage from './pages/ClosingPage'
 
 const pages = [
@@ -12,7 +12,7 @@ const pages = [
   { key: 'countdown', label: 'Save the date' },
   { key: 'celebrations', label: 'The celebrations' },
   { key: 'venue', label: 'The venue' },
-  { key: 'rsvp', label: 'RSVP' },
+  { key: 'gallery', label: 'Our moments' },
   { key: 'closing', label: 'With love' },
 ]
 
@@ -104,8 +104,8 @@ export default function CardDeck({ active }) {
     case 'venue':
       page = <VenuePage />
       break
-    case 'rsvp':
-      page = <RsvpPage />
+    case 'gallery':
+      page = <GalleryPage />
       break
     case 'closing':
       page = <ClosingPage onReplay={() => window.location.reload()} />
